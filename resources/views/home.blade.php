@@ -13,6 +13,11 @@
             box-sizing: border-box;
         }
 
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
         h1 {
             text-align: center;
         }
@@ -22,7 +27,7 @@
             flex-wrap: wrap;
             justify-content: center;
             width: 100vw;
-            margin: 0;
+            margin: 16px 0;
             padding: 0;
         }
 
@@ -46,6 +51,13 @@
             flex-grow: 1;
         }
 
+        .home-button {
+            border: 1px solid grey;
+            padding: 6px;
+            border-radius: 8px;
+            margin: 16px;
+        }
+
 
     </style>
 </head>
@@ -55,7 +67,7 @@
         <ul>
             @foreach ($movies as $movie)
                 <li>
-                    <div class="card">
+                    <a class="card" href="{{route('movie', $movie->id)}}">
                         <h2>
                             {{$movie['title']}}
                         </h2>
@@ -65,10 +77,11 @@
                         <p>
                             <strong>IMDB: {{$movie['vote']}}</strong>
                         </p>
-                    </div>
+                    </a>
                 </li>
             @endforeach
-        </ul>    
+        </ul>
+        <a class="home-button" href="{{route('home')}}">Home</a> 
     </div>
 </body>
 </html>

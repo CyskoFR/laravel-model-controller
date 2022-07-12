@@ -8,10 +8,22 @@ use App\Movie;
 
 class MovieController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         
         $movies = Movie::all();
 
         return view('home', compact('movies'));
+
     }
+
+    public function show($id)
+    {
+
+        $movie = Movie::findOrFail($id);
+
+        return view('movie', compact('movie'));
+        
+    }
+
 }
